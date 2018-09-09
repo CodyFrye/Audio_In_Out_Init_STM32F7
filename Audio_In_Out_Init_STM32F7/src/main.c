@@ -1,8 +1,8 @@
 /*
  * File : 	Main.c
  * Brief: 	main body file used in the process of initializing
- * 		  	the stm32f767zi microcontroller For audio Applications
- * 		  	@ a sampling rate of approximately 48KHz.
+ * 		the stm32f767zi microcontroller For audio Applications
+ * 		@ a sampling rate of approximately 48KHz.
  */
 
 #include "stm32f7.h"
@@ -22,8 +22,8 @@ void main()
 
 	/*
 	 * Initialize Clock:
-	 * 		Enable HSE in Bypass mode			(+)
-	 * 		Enable PLL @ 48MHz					(+)
+	 * 		Enable HSE in Bypass mode		(+)
+	 * 		Enable PLL @ 48MHz			(+)
 	 * 		Enable SAI PLL (SAIPLLQ) @ 48Mhz	(+)
 	 *
 	 */
@@ -32,15 +32,15 @@ void main()
 	/*
 	 *	Initialize DMA:
 	 *		Param: 	PingTx -> addr. of Ping Transmit Buffer
-	 *				PongTx -> addr. of Pong Transmit Buffer
-	 *				PingRx -> addr. of Ping Receive Buffer
-	 *				PongRx -> addr. of Pong Receive Buffer
+	 *			PongTx -> addr. of Pong Transmit Buffer
+	 *			PingRx -> addr. of Ping Receive Buffer
+	 *			PongRx -> addr. of Pong Receive Buffer
 	 *
-	 *		Enable Double Buffer mode			(+)
-	 *		Enable Circular buffer mode			(+)
+	 *		Enable Double Buffer mode		(+)
+	 *		Enable Circular buffer mode		(+)
 	 *		Set Peripheral and Memory addresses	(+)
-	 *		Set increment memory				(+)
-	 *		Set Size to 128						(+)
+	 *		Set increment memory			(+)
+	 *		Set Size to 128				(+)
 	 *
 	 */
 		unsigned long *PingTx = BufferPingTx;
@@ -54,8 +54,8 @@ void main()
 	 * Initialize SAI1:
 	 * 		Block A -> Master Transmit	(+)
 	 * 		Block B -> Master Receive	(+)
-	 * 		16 Bit data size 			(+)
-	 * 		2 slots 					(+)
+	 * 		16 Bit data size 		(+)
+	 * 		2 slots 			(+)
 	 * 		48 KHz sampling Rate		(+)
 	 * 			error -> ~2%
 	 *
