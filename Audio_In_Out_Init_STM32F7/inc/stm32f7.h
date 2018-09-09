@@ -1,12 +1,12 @@
 /*
  * File :	stm32f7.h
  * Brief:	Register defines for the stm32f767zi
- * 			microcontroller
+ * 		microcontroller
  * Note:	This File Only defines the registers
- * 			that were used for initialization.
- * 			Modifying or adding on to the template
- * 			involving other peripherals will require
- * 			further defining of the peripheral address
+ * 		that were used for initialization.
+ * 		Modifying or adding on to the template
+ * 		involving other peripherals will require
+ * 		further defining of the peripheral address
  */
 
 #ifndef STM32F7_H
