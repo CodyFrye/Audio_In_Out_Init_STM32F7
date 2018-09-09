@@ -1,8 +1,8 @@
 /*
  * file : 	RCC_Init.c
  * Brief:	initialization of of the clocks using
- * 			using the HSE pin in Bypass mode and
- * 			the on board PLL
+ * 		using the HSE pin in Bypass mode and
+ * 		the on board PLL
  */
 
 #include "stm32f7.h"
@@ -10,24 +10,24 @@
 void RCC_Init()
 {
 	/* set the output clock */
-	RCC->CFGR |= (1<<22)|(1<<21);	//Configure clock for PLL Mode
+	RCC->CFGR |= (1<<22)|(1<<21);		//Configure clock for PLL Mode
 	RCC->AHB1ENR |= (1<<0);			//enable GPIOA Clock
 	GPIOA->MODER |= (2<<16);		//GPIOA Pin 16 Alternate Function
 	GPIOA->OSPEEDR |= (3<<16);		//Speed High
 
 	/* enable HSE in bypass mode */
-	RCC->CR |= (1<<18);						//enable bypass mode
-	RCC->CR |= (1<<16);						//Enable HSE
+	RCC->CR |= (1<<18);			//enable bypass mode
+	RCC->CR |= (1<<16);			//Enable HSE
 	while(RCC->CR != (RCC->CR | (1<<17)))	//loop until Ready
 	{
 		//do nothing
 	}
-	RCC->CFGR |= (1<<0);					//HSE Becomes Main Clock Temporarily
+	RCC->CFGR |= (1<<0);			//HSE Becomes Main Clock Temporarily
 
 	/* disable HSI */
-	if(RCC->CR == (RCC->CR | (1<<0)))		//Check if HSI is Still on
+	if(RCC->CR == (RCC->CR | (1<<0)))	//Check if HSI is Still on
 	{
-		RCC->CR &= ~(1<<0);					//Turn HSI off
+		RCC->CR &= ~(1<<0);		//Turn HSI off
 	}
 
 	/*
@@ -57,8 +57,8 @@ void RCC_Init()
 	RCC->CFGR |= (3<<30);
 
 	/* enable main PLL */
-	RCC->PLLCFGR |= (1<<22);				//PLL clock source is HSE
-	RCC->CR |= (1<<24);						//Enable PLL (Not main Clock Source yet)
+	RCC->PLLCFGR |= (1<<22);		//PLL clock source is HSE
+	RCC->CR |= (1<<24);			//Enable PLL (Not main Clock Source yet)
 	while(RCC->CR != (RCC->CR | (1<<25)))	//loop until ready
 		{
 			//do nothing
@@ -87,7 +87,7 @@ void RCC_Init()
 				//do nothing
 			}
 
-	RCC->CFGR ^= (3<<0);					//PLL Becomes Main Clock
+	RCC->CFGR ^= (3<<0);			//PLL Becomes Main Clock
 
 	/* catch if PLL not main clock */
 	while(RCC->CFGR != (RCC->CFGR | (2<<2)))
